@@ -2,4 +2,21 @@ canvas {
   position: fixed;
   top: 0;
   left: 0;
+  z-index: -1;
+  width: 100vw;
+  height: 100vh;
+}
+/* .section {
+  height: 200vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+  color: white;
+  z-index: 1;
+  position: relative;
+} */
+.panel{
+  height: 150vh;
+  background: transparent;
 }
