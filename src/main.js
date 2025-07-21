@@ -7,17 +7,20 @@ import { loadSatellite } from './objects/satellite.js'
 import { addStars } from './objects/stars.js'
 import { setupResizeHandler } from './utils/resize.js'
 import { startScrollAnimations } from './animation/scroll.js'
+import { add } from 'three/tsl'
 
 const { scene, renderer } = createScene()
 const camera = createCamera()
+camera.position.set(0, 0, 90)
 addLights(scene)
 
 const earth = loadEarth()
 const satellite = loadSatellite()
+const stars = addStars()
 
 scene.add(earth)
-scene.add(loadSatellite())
-scene.add(addStars())
+scene.add(satellite)
+scene.add(stars)
 
 setupResizeHandler(camera, renderer)
 
