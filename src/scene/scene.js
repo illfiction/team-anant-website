@@ -5,7 +5,7 @@ export function createScene() {
   const spaceTexture = new THREE.TextureLoader().load('/space.jpg')
   spaceTexture.colorSpace = THREE.SRGBColorSpace
   
-  scene.background = spaceTexture
+  // scene.background = spaceTexture
 
   const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('bg') })
   renderer.setSize(window.innerWidth, window.innerHeight)
