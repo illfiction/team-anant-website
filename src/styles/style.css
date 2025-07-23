@@ -19,4 +19,8 @@ canvas {
 .panel{
   height: 150vh;
   background: transparent;
+  color: white;
+}
+#look-at-earth{
+  height: 40vh;
 }

@@ -14,33 +14,89 @@ const satellite = loadSatellite()
 
 camera.lookAt(earth.position);
 
-const dummy = new THREE.Object3D();
-dummy.position.copy(camera.position);
-dummy.lookAt(satellite.position);
-const targetQuaternion = dummy.quaternion.clone();
+// const dummy = new THREE.Object3D();
+// dummy.position.copy(camera.position);
+// dummy.lookAt(satellite.position);
+// const targetQuaternion = dummy.quaternion.clone();
+
+
 
 export function startScrollAnimations(camera) {
+  const camera = createCamera()
+  const earth = loadEarth()
+  const satellite = loadSatellite()
+
+  camera.lookAt(earth.position);
+
   gsap.to(camera.position, {
-    // z: 85,
+    x: 0,
+    y: 0,
+    z: 80,
     scrollTrigger: {
-      trigger: 'intro',
+      trigger: '#intro',
       start: 'top center',
       end: 'bottom center',
       scrub: true,
+      markers: true
     }
   });
-  gsap.to(camera.quaternion, {
-    x: targetQuaternion.x,
-    y: targetQuaternion.y,
-    z: targetQuaternion.z,
-    w: -targetQuaternion.w,
+
+  gsap.to(camera.position, {
+    x: 20,
+    z: 70,
     ease: "power2.inOut",
     scrollTrigger: {
       trigger: '#zoom-sat',
       start: 'top center',
       end: 'bottom center',
       scrub: true,
-    }
-    });
-  // You can add more keyframes or lookAt changes here
+      markers: true,
+    },
+  });
+
+  gsap.fromTo(camera.position, {
+    x: 20,
+    z: 70,
+  },
+  {
+    x: 40,
+    y: 5,
+    z: 60,
+    ease: "power1.inOut",
+    onUpdate: () => {
+      camera.lookAt(satellite.position)
+    },
+    scrollTrigger: {
+      trigger: '#orbit-sat',
+      start: 'top center',
+      end: 'bottom center',
+      scrub: true,
+      markers: true,
+    },
+  });
+
+  
+  const timeLine = gsap.timeline({
+    scrollTrigger: {
+      trigger: '#fly-earth',
+      start: 'top center',
+      end: 'bottom center',
+      scrub: true,
+      markers: true,
+    },
+  })
+
+  timeLine.to(camera.quaternion, {
+    x: 0.55337157109286,
+    y: 0.069171446386607,
+    z: 0.83005735663929,
+    w: 0,
+    ease: "power2.inOut"
+  })
+  .to(camera.position, {
+    // x: 40,
+    // y: 5,
+    // z: 60,
+    ease: "power2.inOut"
+  },"<")
 }

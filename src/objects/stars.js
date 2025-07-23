@@ -2,13 +2,13 @@ import * as THREE from 'three'
 
 export function addStars() {
   const geo = new THREE.BufferGeometry()
-  const starCount = 1000
+  const starCount = 2000
   const positions = []
 
   for (let i = 0; i < starCount; i++) {
-    positions.push((Math.random() - 0.5) * 200)
-    positions.push((Math.random() - 0.5) * 200)
-    positions.push((Math.random() - 0.5) * 200)
+    positions.push((Math.random() - 0.5) * 500)
+    positions.push((Math.random() - 0.5) * 500)
+    positions.push((Math.random() - 0.5) * 500)
   }
 
   geo.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3))
