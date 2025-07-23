@@ -1,4 +1,5 @@
 import * as THREE from 'three'
+const base = import.meta.env.BASE_URL
 
 export function addStars() {
   const geo = new THREE.BufferGeometry()
@@ -13,7 +14,7 @@ export function addStars() {
 
   geo.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3))
 
-  const texture = new THREE.TextureLoader().load(new URL('../assets/white_circle.png', import.meta.url))
+  const texture = new THREE.TextureLoader().load(`${base}white_circle.png`)
   const mat = new THREE.PointsMaterial({
     color: 0xffffd0,
     size: 0.3,
