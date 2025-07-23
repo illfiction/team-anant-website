@@ -1,6 +1,6 @@
-/**
- *  @type {import('vite').UserConfig}
- */
-export default {
-    base: process.env.NODE_ENV === 'production' ? '/team-anant-website/' : ''
-}
+// vite.config.js
+import { defineConfig } from 'vite'
+
+export default defineConfig({
+  base: '/team-anant-website/',
+})
